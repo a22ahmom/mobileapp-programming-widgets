@@ -1,39 +1,75 @@
 
 # Rapport
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+**
+Det 1 som gjordes var att forka appen widgets till repository i Android Studio.
+Det 1 problemet löstes genom att välja linearLayout och implementera det med lite kod (kolla på snuttkoden).
+Det 2 problemet löstes genom att implementera editText view i layouten, därefter göra buttonView och sist 
+implementera imageView i linearLayout. För varje av de 3 views användes margin med olika värden.
+När button view skulle implementeras användes en clickListener, så när användaren klicker på button
+knappen skriver programmet ut en liten text som visas i LogCat.
+Det 3 problemet var att positionera de 3 views genom att flytta runt de mha olika attribut som hade 
+specifika funktioner och på så sätt snygga till den allmänna utseendet av appen.
+**
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button b = findViewById(R.id.myNewBtn);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("==>","We clicked on Button!");
+            }
+        });
     }
-}
+    
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/myNewEdt"
+        android:hint="Name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="50dp" />
+
+    <Button
+        android:id="@+id/myNewBtn"
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_margin="100dp"
+        android:contentDescription="his logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/his" />
+</LinearLayout>
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](Widgets.png)
 
 Läs gärna:
 
